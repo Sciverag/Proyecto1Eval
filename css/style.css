@@ -4,6 +4,7 @@
     --color-secundario: rgb(234, 173, 21);
     --fondo-translucido: rgba(0, 0, 0, 0.626);
     --sombra-caja: 0 0 10px rgb(78, 78, 78);
+    --sombra-interna: inset 0 0 10px rgb(43, 43, 43);
 }
 
 
@@ -177,6 +178,7 @@ main {
 
 #contenedorLogo {
     background: var(--fondo-translucido);
+    box-shadow: var(--sombra-interna);
     display: flex;
     padding: 4%;
     justify-content: center;
@@ -271,16 +273,19 @@ input{
 }
 
 #alimentos {
+    box-shadow: var(--sombra-interna);
    background-image: url(../img/alimentos.png);
    background-size: cover;
 }
 
 #limpieza {
+    box-shadow: var(--sombra-interna);
    background-image: url(../img/limpieza.webp);
    background-size: cover;
 }
 
 #electronica {
+    box-shadow: var(--sombra-interna);
     background-image: url(../img/electronica.webp);
     background-size: cover;
 }
@@ -337,6 +342,7 @@ input{
 }
 
 #informacionWeb {
+    box-shadow: var(--sombra-interna);
     width: 80%;
     display: flex;
     align-items: center;
