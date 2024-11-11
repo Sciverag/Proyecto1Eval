@@ -1,0 +1,355 @@
+:root {
+    --navfooter-color: rgb(88, 88, 88);
+    --color-primario: rgb(0, 212, 67);
+    --color-secundario: rgb(234, 173, 21);
+    --fondo-translucido: rgba(0, 0, 0, 0.626);
+    --sombra-caja: 0 0 10px rgb(78, 78, 78);
+}
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: linear-gradient(to bottom, rgb(241, 253, 255) 1%, rgb(188, 223, 188) 30% 100%);
+}
+
+a {
+    transition: all 0.2s;
+}
+
+a:has(img:not(#logo)):hover {
+    transition: all 0.2s;
+    scale: 110%;
+}
+
+img {
+    width: 50px;
+}
+
+@keyframes decoration {
+    0% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 10%, rgba(0, 0, 0, 0) 10% 12%, rgba(236, 255, 230, 0.550) 12% 22%);
+    }
+
+    6.66%{
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 10.75%, rgba(0, 0, 0, 0) 10.75% 12.75%, rgba(236, 255, 230, 0.550) 12.75% 22.75%);
+    }
+
+    13.32%{
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 11.5%, rgba(0, 0, 0, 0) 11.5% 13.5%, rgba(236, 255, 230, 0.550) 13.5% 23.5%);
+    }
+
+    19.98% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 12.25%, rgba(0, 0, 0, 0) 12.25% 14.25%, rgba(236, 255, 230, 0.550) 14.25% 24.25%);
+    }
+
+    26.64% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 13%, rgba(0, 0, 0, 0) 13% 15%, rgba(236, 255, 230, 0.550) 15% 25%);
+    }
+
+    33.3% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 13.75%, rgba(0, 0, 0, 0) 13.75% 15.75%, rgba(236, 255, 230, 0.550) 15.75% 25.75%);
+    }
+
+    39.96% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 14.5%, rgba(0, 0, 0, 0) 14.5% 16.5%, rgba(236, 255, 230, 0.550) 16.5% 26.5%);
+    }
+
+    46.62% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 15.25%, rgba(0, 0, 0, 0) 15.25% 17.25%, rgba(236, 255, 230, 0.550) 17.25% 27.25%);
+    }
+
+    53.28% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 16%, rgba(0, 0, 0, 0) 16% 18%, rgba(236, 255, 230, 0.550) 18% 28%);
+    }
+
+    59.94% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 16.75%, rgba(0, 0, 0, 0) 16.75% 18.75%, rgba(236, 255, 230, 0.550) 18.75% 28.75%);
+    }
+
+    66.6% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 17.5%, rgba(0, 0, 0, 0) 17.5% 19.5%, rgba(236, 255, 230, 0.550) 19.5% 29.5%);
+    }
+
+    73.26% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 18.25%, rgba(0, 0, 0, 0) 18.25% 20.25%, rgba(236, 255, 230, 0.550) 20.25% 30.25%);
+    }
+
+    79.92% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 19%, rgba(0, 0, 0, 0) 19% 21%, rgba(236, 255, 230, 0.550) 21% 31%);
+    }
+
+    86.58% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 19.75%, rgba(0, 0, 0, 0) 19.75% 21.75%, rgba(236, 255, 230, 0.550) 21.75% 31.75%);
+    }
+
+    93.24% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 20.5%, rgba(0, 0, 0, 0) 20.5% 22.5%, rgba(236, 255, 230, 0.550) 22.5% 32.5%);
+    }
+
+    99% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 21.25%, rgba(0, 0, 0, 0) 21.25% 23.25%, rgba(236, 255, 230, 0.550) 23.25% 33.25%);
+    }
+
+    100% {
+        background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 22%, rgba(0, 0, 0, 0) 22% 24%, rgba(236, 255, 230, 0.550) 24% 34%);
+    }
+
+}
+
+.decoracionFondo {
+    position: fixed;
+    width: 150vw;
+    background-image: repeating-linear-gradient(to right, rgba(236, 255, 230, 0.550) 10%, rgba(0, 0, 0, 0) 10% 12%, rgba(236, 255, 230, 0.550) 12% 22%);
+    animation: decoration 1.5s  infinite;
+    height: 5vh;
+    rotate: 45deg;
+    z-index: -1;
+}
+
+#d1 {
+    top: 65%;
+    right: 20%;
+}
+
+#d2 {
+    top: 80%;
+    right: 20%;
+}
+
+#d3 {
+    top: 95%;
+    right: 20%;
+}
+
+#d4 {
+    top: -25%;
+    left: 0%;
+}
+
+#d5 {
+    top: -10%;
+    left: 0%;
+}
+
+#d6 {
+    top: 5%;
+    left: 0%;
+}
+
+footer {
+    margin-top: auto;
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    justify-content: space-between;
+    background: var(--navfooter-color);
+    border-top: solid 5px whitesmoke;
+    box-shadow: var(--sombra-caja);
+    align-items: center;
+    padding: 1%;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.navbar {
+    height: 10vh;
+    padding: 1%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 2%;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#contenedorLogo {
+    background: var(--fondo-translucido);
+    display: flex;
+    padding: 4%;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+#logo {
+    width: 100px;
+    transition: all 0.5s;
+}
+
+#logo:hover {
+    rotate: -5deg;
+    scale: 105%;
+    transition: all 0.5s;
+}
+
+#iconos {
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#buscar {
+    background: lightgray;
+    display: flex;
+    align-items: center;
+    padding-right: 0.1%;
+    width: 50%;
+    border: 3px solid whitesmoke;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+#buscar img {
+    width: 25px;
+}
+
+#buscar:hover, #buscar:has(input:focus) {
+    transition: all 0.2s;
+    background: rgb(230, 230, 230);
+}
+
+#ubicacion {
+    width: 85%;
+    height: 1005;
+    display: flex;
+    align-items: center;
+}
+
+#ubicacion > img {
+    margin-right: 1%;
+}
+
+#ubicacion a {
+    color: var(--color-secundario);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#contacto {
+    display: flex;
+    justify-content: space-around;
+    width: 15%;
+}
+
+input{
+    border: none;
+    width: 96%;
+    background: none;
+}
+
+.navbar {
+    background: var(--navfooter-color);
+    border-top: solid 5px whitesmoke;
+    border-bottom: solid 5px whitesmoke;
+    box-shadow: var(--sombra-caja);
+}
+
+#contenedorCarousel {
+    width: 80%;
+    height: 41vh;
+    height: min-content;
+    border: solid 5px whitesmoke;
+}
+
+#myCarousel {
+    width: 100%;
+    height: 100%;
+}
+
+#alimentos {
+   background-image: url(../img/alimentos.png);
+   background-size: cover;
+}
+
+#limpieza {
+   background-image: url(../img/limpieza.webp);
+   background-size: cover;
+}
+
+#electronica {
+    background-image: url(../img/electronica.webp);
+    background-size: cover;
+}
+
+#cambioSeccionP {
+    background-image: url(../img/flechaIzquierda.png);
+}
+
+#cambioSeccionN {
+    background-image: url(../img/flechaDerecha.png);
+}
+
+.carousel-indicators .active {
+    background-color: var(--color-primario)  !important;
+}
+
+.carousel-caption {
+    background-color: var(--fondo-translucido);
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+}
+
+#botonVerProductos {
+    position: relative;
+    bottom: 2.5rem;
+    background-color: var(--color-secundario);
+    text-align: center;
+    border: 5px solid whitesmoke;
+    margin-top: 1%;
+    transition: all 0.3s;
+}
+
+#botonVerProductos:hover {
+    transform: rotate(-1deg);
+    transition: all 0.3s;
+}
+
+#botonVerProductos a{
+    text-decoration: none;
+    font-weight: bold;
+    color: whitesmoke;
+    font-size: 2.5vw;
+    padding: 1%;
+}
+
+#cuerdas {
+    position: relative;
+    bottom: 0.5rem;
+    z-index: -1;
+    height: 6vh; 
+    width: 15%;
+    border: solid 0.3rem black;
+}
+
+#informacionWeb {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    max-height: 40vh;
+    border: solid 5px whitesmoke;
+    background: var(--fondo-translucido);
+    text-align: center;
+    padding: 5%;
+}
+
+#informacionWeb > p{
+    width: 100%;
+    font-size: 1.5vw;
+    color: whitesmoke;
+    font-weight: bold;
+}
