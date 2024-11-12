@@ -1,6 +1,6 @@
 :root {
     --navfooter-color: rgb(88, 88, 88);
-    --color-primario: rgb(0, 212, 67);
+    --color-primario: rgb(16, 204, 75);
     --color-secundario: rgb(234, 173, 21);
     --fondo-translucido: rgba(0, 0, 0, 0.626);
     --fondo-icono: rgba(0, 0, 0, 0.82);
@@ -386,6 +386,7 @@ input{
     align-items: center;
     justify-content: center;
     border: solid 5px whitesmoke;
+    border-radius: 10px;
     box-shadow: var(--sombra-interna);
 }
 
@@ -399,6 +400,7 @@ input{
     align-items: center;
     justify-content: center;
     border: solid 5px whitesmoke;
+    border-radius: 10px;
     box-shadow: var(--sombra-interna);
 }
 
@@ -533,6 +535,7 @@ input{
     background-color: var(--fondo-translucido);
     padding: 1%;
     border: solid 5px whitesmoke;
+    border-radius: 10px;
 }
 
 #contenedorFiltros > h1 {
@@ -568,6 +571,7 @@ input{
     grid-template-rows: auto;
     grid-gap: 1%;
     border: solid 5px whitesmoke;
+    border-radius: 10px;
     padding: 1%;
 }
 
@@ -603,6 +607,10 @@ input{
 
 .card > button:hover {
     background-color: black;
+}
+
+.card > button:hover > span {
+    animation: carro 0.25s linear;
 }
 
 .card-body > a{
@@ -733,8 +741,8 @@ input{
 #etiquetasProducto > p {
     text-align: center;
     width: fit-content;
-    background-color: lightgray;
-    border: solid 3px whitesmoke;
+    background-color: whitesmoke;
+    border: solid 3px white;
     color: rgb(69, 153, 255);
     font-weight: bold;
     border-radius: 10px;
@@ -746,6 +754,7 @@ input{
 
 #etiquetasProducto > p:hover {
     transform: translateY(-5%);
+    box-shadow: var(--sombra-carta);
 }
 
 #marcaProducto {
@@ -764,7 +773,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type=number] {
-    width: 10%;
+    width: 15%;
     text-align: center;
     font-size: 1vw;
     background-color: whitesmoke;
@@ -794,11 +803,13 @@ input[type=number] {
 
 #descripcionProducto {
     font-size: 0.9vw;
+    font-weight: 500;
+    color: rgb(10, 10, 10);
 }
 
 #aumentar, #disminuir {
     font-size: 1vw;
-    width: 10%;
+    width: 15%;
     background-color: var(--color-primario);
     border: none;
 }
@@ -825,4 +836,28 @@ button:is(#aumentar, #disminuir):active {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: whitesmoke;
+    background-color: rgb(28, 28, 28);
+}
+
+#botonComprar:hover {
+    background-color: black;
+}
+
+@keyframes carro {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(-10%);
+    }
+
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+#botonComprar:hover > span {
+    animation: carro 0.2s linear;
 }
