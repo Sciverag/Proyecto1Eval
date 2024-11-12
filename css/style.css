@@ -3,9 +3,10 @@
     --color-primario: rgb(0, 212, 67);
     --color-secundario: rgb(234, 173, 21);
     --fondo-translucido: rgba(0, 0, 0, 0.626);
-    --fondo-icono: rgba(0, 0, 0, 0.753);
+    --fondo-icono: rgba(0, 0, 0, 0.82);
     --sombra-caja: 0 0 10px rgb(78, 78, 78);
     --sombra-interna: inset 0 0 10px rgb(43, 43, 43);
+    --sombra-carta: 0 0 5px rgb(20, 20, 20);
 }
 
 
@@ -166,7 +167,7 @@ header {
     padding: 1%;
 }
 
-main {
+main:not(#mainProductos) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -178,7 +179,7 @@ main {
 }
 
 #contenedorLogo {
-    background: var(--fondo-translucido);
+    background: var(--fondo-icono);
     box-shadow: var(--sombra-interna);
     display: flex;
     padding: 4%;
@@ -228,7 +229,7 @@ main {
     width: 25px;
 }
 
-#buscar:hover, #buscar:has(input:focus) {
+#buscar:hover, #buscar:has(input:focus), #formLogin > div:hover, #formLogin > div:has(input:focus) {
     transition: all 0.2s;
     background: rgb(230, 230, 230);
 }
@@ -248,6 +249,10 @@ main {
     color: var(--color-secundario);
     font-weight: bold;
     text-decoration: none;
+}
+
+#ubicacion a:hover {
+    text-decoration: underline;
 }
 
 #contacto {
@@ -349,6 +354,7 @@ input{
     height: 6vh; 
     width: 15%;
     border: solid 0.3rem black;
+    border-bottom: none;
 }
 
 #informacionWeb {
@@ -373,7 +379,7 @@ input{
 #contenedorLogin {
     padding: 3%;
     width: 40%;
-    height: 60vh;
+    height: 65vh;
     background-color: var(--navfooter-color);
     display: flex;
     flex-direction: column;
@@ -471,4 +477,142 @@ input{
     background-color: var(--color-primario);
     scale: 110%;
     transition: all 0.3s;
+}
+
+.breadcrumb {
+    width: 100%;
+    background-color: var(--fondo-icono) !important;
+    margin-bottom: 0% !important;
+    justify-content: flex-end;
+    padding: 0.5% 2% !important;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: rgba(245, 245, 245, 0.752) !important;
+}
+
+.breadcrumb-item {
+    color: var(--color-primario);
+    font-weight: bold;
+}
+
+.breadcrumb-item:not(.active):hover {
+    filter: brightness(110%);
+}
+
+.breadcrumb-item.active {
+    color: var(--color-secundario) !important;
+}
+
+.btn-google {
+    margin-top: 4%;
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-size: 0.8vw;
+    padding: 5px 10px;
+    font-weight: bold;
+    border: solid 3px whitesmoke;
+    text-decoration: none;
+    color: #545454;
+    background-color: lightgray;
+}
+
+.btn-google img {
+    width: 6%;
+}
+
+#mainProductos {
+    margin-top: 1%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+#contenedorFiltros {
+    width: 100%;
+    background-color: var(--fondo-translucido);
+    padding: 1%;
+    border: solid 5px whitesmoke;
+}
+
+#contenedorFiltros > h1 {
+    color: whitesmoke;
+}
+
+#filtros {
+    width: 100%;
+    display: flex;
+}
+
+#filtros > button {
+    background-color: var(--color-secundario);
+    border: solid 3px whitesmoke;
+    margin-right: 1%;
+    border-radius: 10px;    
+    color: whitesmoke;
+    font-weight: bold;
+    transition: all 0.25s;
+}
+
+#filtros > button:hover, button[activado] {
+    background-color: var(--color-primario);
+    scale: 105%;
+    transition: all 0.25s;
+}
+
+#listaProductos {
+    display: grid;
+    background-color: var(--fondo-translucido);
+    margin-top: 3%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 1%;
+    border: solid 5px whitesmoke;
+    padding: 1%;
+}
+
+.card {
+    border: none !important;
+    box-shadow: var(--sombra-carta);
+}
+
+.card > button {
+    border: none;
+    background-color: rgb(28, 28, 28);
+    color: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card > img {
+    box-shadow: var(--sombra-interna);
+    filter: brightness(75%);
+    transition: all 0.2s;
+}
+
+.card:has(.card-body > a:hover) > img {
+    filter: brightness(100%);
+    box-shadow: var(--sombra-caja);
+    scale: 101%;
+    transition: all 0.2s;
+}
+
+.card > button:hover {
+    background-color: black;
+}
+
+.card-body > a{
+    color: var(--color-primario) !important;
+}
+
+.card-title {
+    font-size: 1.25vw !important;
+}
+
+.card-body > a:hover {
+    filter: brightness(80%);
 }
