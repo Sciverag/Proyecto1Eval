@@ -3,6 +3,7 @@
     --color-primario: rgb(0, 212, 67);
     --color-secundario: rgb(234, 173, 21);
     --fondo-translucido: rgba(0, 0, 0, 0.626);
+    --fondo-icono: rgba(0, 0, 0, 0.753);
     --sombra-caja: 0 0 10px rgb(78, 78, 78);
     --sombra-interna: inset 0 0 10px rgb(43, 43, 43);
 }
@@ -184,6 +185,7 @@ main {
     justify-content: center;
     align-items: center;
     height: 10vh;
+    box-shadow: var(--sombra-interna);
 }
 
 #logo {
@@ -201,6 +203,13 @@ main {
     display: flex;
     width: 40%;
     justify-content: space-around;
+    align-items: center;
+}
+
+#iconoLogin {
+    display: flex;
+    width: 100%;
+    justify-content: center;
     align-items: center;
 }
 
@@ -358,4 +367,94 @@ input{
     font-size: 1.5vw;
     color: whitesmoke;
     font-weight: bold;
+}
+
+#contenedorLogin {
+    padding: 3%;
+    width: 40%;
+    height: 60vh;
+    background-color: var(--navfooter-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid 5px whitesmoke;
+    box-shadow: var(--sombra-interna);
+}
+
+#contenedorLogin > div > img{
+    width: 200px;
+    animation: icono-reverse 10s infinite linear;
+    animation-delay: 0s;
+}
+
+#contenedorLogin > div:nth-child(1) {
+    border: dashed 5px rgb(255, 255, 255);
+    animation: icono 10s infinite linear;
+    border-radius: 100%;
+}
+
+@keyframes icono {
+    0% {
+        rotate: 0deg;
+    }
+
+    50% {
+        rotate: 180deg;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}
+
+@keyframes icono-reverse {
+    0% {
+        rotate: 360deg;
+    }
+
+    50% {
+        rotate: 180deg;
+    }
+
+    100% {
+        rotate: 0deg;
+    }
+}
+
+#formLogin {
+    height: 50%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 4%;
+}
+
+#formLogin div {
+    display: flex;
+    background: lightgray;
+    width: 100%;
+    border: solid 5px whitesmoke;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+.botonLogin {
+    background-color: var(--color-secundario);
+    width: fit-content;
+    color: whitesmoke;
+    font-size: large;
+    font-weight: bold;
+    padding: 2%;
+    border: solid 3px whitesmoke;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.botonLogin:hover {
+    background-color: var(--color-primario);
+    scale: 110%;
+    transition: all 0.3s;
 }
