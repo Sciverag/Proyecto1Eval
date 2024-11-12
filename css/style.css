@@ -325,6 +325,7 @@ input{
     text-align: center;
     border: 5px solid whitesmoke;
     margin-top: 1%;
+    padding: 1%;
     transition: all 0.3s;
 }
 
@@ -337,7 +338,7 @@ input{
     text-decoration: none;
     font-weight: bold;
     color: whitesmoke;
-    font-size: 2.5vw;
+    font-size: 2.7vw;
     padding: 1%;
 }
 
@@ -382,13 +383,26 @@ input{
     box-shadow: var(--sombra-interna);
 }
 
-#contenedorLogin > div > img{
+#contenedorRegistro {
+    padding: 3%;
+    width: 40%;
+    height: auto;
+    background-color: var(--navfooter-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid 5px whitesmoke;
+    box-shadow: var(--sombra-interna);
+}
+
+#contenedorLogin > div > img, #contenedorRegistro > div > img{
     width: 200px;
     animation: icono-reverse 10s infinite linear;
     animation-delay: 0s;
 }
 
-#contenedorLogin > div:nth-child(1) {
+#contenedorLogin > div:nth-child(1), #contenedorRegistro > div:nth-child(1) {
     border: dashed 5px rgb(255, 255, 255);
     animation: icono 10s infinite linear;
     border-radius: 100%;
@@ -423,7 +437,7 @@ input{
 }
 
 #formLogin {
-    height: 50%;
+    height: 40vh;
     width: 80%;
     display: flex;
     flex-direction: column;
