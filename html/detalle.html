@@ -26,7 +26,8 @@
         </div>
         <nav class="breadcrumb">
             <a class="breadcrumb-item" href="index.html">Inicio</a>
-            <span class="breadcrumb-item active" aria-current="page">Productos</span>
+            <a class="breadcrumb-item" href="productos.html">Productos</a>
+            <span class="breadcrumb-item active" aria-current="page">Detalle</span>
         </nav>
         <header>
             <nav class="navbar d-flex px-4">
@@ -42,66 +43,41 @@
             </nav>
         </header>
 
-        <main id="mainProductos">
-              <div id="contenedorFiltros">
-                <h1>Tipo</h1>
-                <div id="filtros">
-                    <button>Alimentos</button>
-                    <button>Limpieza</button>
-                    <button>Electrónica</button>
+        <main>
+            <div id="contenedorDetalle">
+                <div id="imagenProducto">
+                    <img src="../img/alimentos.png">
                 </div>
-              </div>
-              
-              <div id="listaProductos">
-                    <div class="card">
-                        <img class="card-img-top" src="../img/alimentos.png" alt="Imagen" />
-                        <div class="card-body">
-                            <a href="detalle.html"><h4 class="card-title">Nombre del Producto</h4></a>
-                            <p class="card-text">10€</p>
+                <div id="contenedorInfoProducto">
+                    <div>
+                        <h1 id="nombreProducto">Nombre del Producto</h1>
+                    </div>
+                    <div id="contenidoExtra">
+                        <h2 id="marcaProducto">Marca</h2>
+                        <h3 id="precioProducto">10€</h3>
+                        <div id="etiquetasProducto">
+                            <p>Etiqueta 1</p>
+                            <p>Etiqueta 2</p>
+                            <p>Etiqueta 3</p>
                         </div>
-                        <button>
-                            <span class="material-symbols-outlined">
-                            shopping_cart
-                            </span>
-                        </button>
-                    </div> 
-                    <div class="card">
-                        <img class="card-img-top" src="../img/limpieza.webp" alt="Imagen" />
-                        <div class="card-body">
-                            <a href="detalle.html"><h4 class="card-title">Nombre del Producto</h4></a>
-                            <p class="card-text">10€</p>
+                        <div id="descripcionProducto">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit eum harum soluta voluptatum, facilis aut nobis ratione quia, incidunt consequatur rerum amet eveniet ab sed culpa fugiat eos accusamus deserunt.</p>
                         </div>
-                        <button>
-                            <span class="material-symbols-outlined">
-                            shopping_cart
-                            </span>
-                        </button>
-                    </div> 
-                    <div class="card">
-                        <img class="card-img-top" src="../img/logo.png" alt="Imagen" />
-                        <div class="card-body">
-                            <a href="detalle.html"><h4 class="card-title">Nombre del Producto</h4></a>
-                            <p class="card-text">10€</p>
+                        <div id="compraProducto">
+                            <div id="contenedorCantidad">
+                                <button id="aumentar">+</button>
+                                <input type="number" value="1" min="1">
+                                <button id="disminuir">-</button>
+                            </div>
+                            <button id="botonComprar">
+                                <span class="material-symbols-outlined">
+                                shopping_cart
+                                </span>
+                            </button>
                         </div>
-                        <button>
-                            <span class="material-symbols-outlined">
-                            shopping_cart
-                            </span>
-                        </button>
-                    </div> 
-                    <div class="card">
-                        <img class="card-img-top" src="../img/electronica.webp" alt="Imagen" />
-                        <div class="card-body">
-                            <a href="detalle.html"><h4 class="card-title">Nombre del Producto</h4></a>
-                            <p class="card-text">10€</p>
-                        </div>
-                        <button>
-                            <span class="material-symbols-outlined">
-                            shopping_cart
-                            </span>
-                        </button>
-                    </div> 
-              </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <footer>
