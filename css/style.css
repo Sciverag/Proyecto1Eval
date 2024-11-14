@@ -9,7 +9,10 @@
     --sombra-carta: 0 0 5px rgb(20, 20, 20);
 }
 
-
+* {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+}
 
 body {
     display: flex;
@@ -237,7 +240,7 @@ main:not(#mainProductos) {
 
 #ubicacion {
     width: 85%;
-    height: 1005;
+    height: auto;
     display: flex;
     align-items: center;
 }
@@ -278,7 +281,6 @@ input{
 #contenedorCarousel {
     width: 80%;
     height: 41vh;
-    height: min-content;
     border: solid 5px whitesmoke;
 }
 
@@ -344,7 +346,7 @@ input{
     text-decoration: none;
     font-weight: bold;
     color: whitesmoke;
-    font-size: 2.7vw;
+    font-size: calc(1em + 1.7vw);
     padding: 1%;
 }
 
@@ -735,7 +737,6 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     width: 100%;
-    justify-content: space-around;
     border-top: solid 5px rgb(101, 101, 101);
     border-bottom: solid 5px rgb(101, 101, 101);
 }
@@ -750,8 +751,7 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     border-radius: 10px;
     font-size: 1vw;
     padding: 1% 2%;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto;
 }
 
 #etiquetasProducto > p:hover {
@@ -1090,4 +1090,52 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     justify-content: space-around;
     height: 25vh;
     min-height: fit-content;
+}
+
+@media (max-width: 1024px) {
+    #contenedorDetalle {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #imagenProducto {
+        height: 30vh;
+        width: auto;
+    }
+
+    #etiquetasProducto {
+        width: 100%;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-row-gap: 1vh;
+    }
+
+    p {
+        font-size: 1.5vw;
+    }
+
+    #descripcionProducto {
+        margin-bottom: 10vh;
+        text-align: center;
+    }
+
+    a > img, #ubicacion > img {
+        width: 30px;
+        height: auto;
+    }
+
+    #contacto {
+        width: 40%;
+    }
+
+    #listaProductos {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    #contenedorCarousel {
+        height: 21vh;
+    }
+
+    .carousel-item > svg {
+        height: 20vh;
+    }
 }
