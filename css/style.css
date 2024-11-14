@@ -227,9 +227,10 @@ main:not(#mainProductos) {
 
 #buscar img {
     width: 25px;
+    margin: auto;
 }
 
-#buscar:hover, #buscar:has(input:focus), #formLogin > div:hover, #formLogin > div:has(input:focus) {
+#buscar:hover, #buscar:has(input:focus), form:is(#formLogin,#formTransferencia)  div:not(#extraTarjeta):hover, form:is(#formLogin,#formTransferencia)  div:has(input:focus):not(#extraTarjeta) {
     transition: all 0.2s;
     background: rgb(230, 230, 230);
 }
@@ -454,13 +455,14 @@ input{
     margin-top: 4%;
 }
 
-#formLogin div {
+form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     display: flex;
     background: lightgray;
     width: 100%;
     border: solid 5px whitesmoke;
     border-radius: 10px;
     padding: 1%;
+    transition: all 0.2s;
 }
 
 .botonLogin {
@@ -998,11 +1000,6 @@ button:is(#aumentar, #disminuir):active {
 #zonaPago > h2 {
     font-size: 1.6vw;
     color: var(--color-primario);
-    text-shadow:
-    1px 1px 0px whitesmoke,
-    -1px -1px 0 whitesmoke,
-    1px -1px 0 whitesmoke,
-    -1px 1px 0 whitesmoke;
     margin-bottom: 6%;
 }
 
@@ -1047,8 +1044,50 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     font-weight: bold;
     border: solid 5px rgb(98, 255, 140);
     transition: all 0.2s;
+    text-decoration: none;
+}
+
+#botonConfirmar:hover {
+    background: var(--color-secundario);
+    border-color: rgb(255, 196, 88);
+}
+
+#contenedorTransferencia {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--navfooter-color);
+    border: solid 5px whitesmoke;
+    border-radius: 10px;
+    min-height: 50vh;
+    width: 50%;
+    padding: 1%;
+    align-items: center;
+}
+
+#contenedorTransferencia > h1 {
+    color: var(--color-primario);
+    font-weight: bolder;
+    font-size: 2.5vw;
+    animation: nombre 0.2s linear;
 }
 
 #botonConfirmar:hover {
     scale: 110%;
+}
+
+#extraTarjeta {
+    display: flex;
+    justify-content: space-between;
+}
+
+#extraTarjeta > div{
+    width: 40% !important;
+}
+
+#formTransferencia {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 25vh;
+    min-height: fit-content;
 }
