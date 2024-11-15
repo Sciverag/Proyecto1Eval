@@ -997,7 +997,7 @@ button:is(#aumentar, #disminuir):active {
 }
 
 .precio, .subtotal {
-    font-size: x-small;
+    font-size: small;
 }
 
 .subtotal {
@@ -1006,7 +1006,7 @@ button:is(#aumentar, #disminuir):active {
 }
 
 .eliminar span {
-    font-size: medium;
+    font-size: large;
 }
 
 #zonaPago {
@@ -1191,6 +1191,14 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
 
     #informacionPrecio {
         margin-bottom: 3%;
+    }
+
+    .precio, .subtotal {
+        font-size: x-small;
+    }
+    
+    .eliminar span {
+        font-size: medium;
     }
 }
 
