@@ -168,6 +168,7 @@ header {
 .navbar {
     height: 10vh;
     padding: 1%;
+    z-index: 2;
 }
 
 main:not(#mainProductos) {
@@ -1115,6 +1116,76 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     min-height: fit-content;
 }
 
+#barraBuscador {
+    background: lightgrey;
+    width: 75%;
+    margin-left: auto;
+    margin-top: 1%;
+    border: solid 5px whitesmoke;
+    display: none;
+    z-index: 1;
+}
+
+#barraBuscador[activada] {
+    display: block;
+    transition: all 0.5s;
+    animation: busqueda 0.2s linear;
+}
+
+@keyframes  busqueda{
+    0% {
+        transform: translateY(-50%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+#barraBuscador > input {
+    width: 100%;
+}
+
+#breadcrumbResponsive {
+    flex-direction: column;
+    height: 80vh;
+    position: fixed;
+    top: 10%;
+    background-color: var(--fondo-icono);
+    border-right: solid 5px whitesmoke;
+    width: 30vw;
+    padding-top: 20%;
+    align-items: center;
+    display: none;
+}
+
+#breadcrumbResponsive > * {
+    margin-bottom: 10%;
+    font-size: larger;
+}
+
+#breadcrumbResponsive > a {
+    color: var(--color-primario);
+}
+
+#breadcrumbResponsive > span {
+    color: var(--color-secundario);
+}
+
+#breadcrumbResponsive[activada] {
+    display: flex;
+    animation: breadcrumb 0.1s linear;
+}
+
+@keyframes breadcrumb {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
 
 @media (max-width: 1024px) {
     #contenedorDetalle {
