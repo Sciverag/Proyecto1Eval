@@ -7,20 +7,6 @@
         private $pwd;
         private $administrador;
 
-        static function getAll($link){
-            try{
-                $consulta="SELECT * FROM clientes";
-                $result=$link->prepare($consulta);
-                $result->execute();
-                return $result;
-            }
-            catch(PDOException $e){
-                $error = "Error: " . $e->getMessage();
-                return $error;
-                die();
-            }
-        }
-
         function __construct($dni, $nombre='', $direccion='', $email='', $pwd='', $administrador=false){
             $this->dni=$dni;
             $this->nombre=$nombre;
@@ -38,9 +24,7 @@
                 $dato=$result->fetch(PDO::FETCH_ASSOC);
                 
                 if($dato){
-                    $hash = password_hash($this->pwd,PASSWORD_DEFAULT);
-
-                    if(password_verify($hash,$dato['pwd'])){
+                    if(password_verify($this->pwd, $dato['pwd'])){
                         return true;
                     }else{
                         return false;

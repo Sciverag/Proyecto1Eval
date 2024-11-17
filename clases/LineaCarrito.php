@@ -5,16 +5,20 @@
         private $idProducto;
         private $cantidad;
 
-        function __construct($idCarrito, $nlinea, $idProducto, $cantidad ) {
+        function __construct($idCarrito, $nlinea='', $idProducto='', $cantidad='' ) {
             $this->idCarrito = $idCarrito;
             $this->nlinea = $nlinea;
             $this->idProducto = $idProducto;
             $this->cantidad = $cantidad;
         }
 
+        function __set($name, $value){
+            $this->$name = $value;
+        }
+
         function getAllByIdCarro($link){
             try {
-                $consulta = "SELECT * FROM lineascarro WHERE idCarrito = '$this->idCarrito'";
+                $consulta = "SELECT *, count(*) cantidadLineas FROM lineascarro WHERE idCarrito = '$this->idCarrito'";
                 $result = $link->prepare($consulta);
                 $result->execute();
                 return $result;
@@ -26,12 +30,13 @@
             }
         }
 
-        static function maxNlinea($link, $idCarrito){
+        function maxNlinea($link){
             try {
-                $consulta = "SELECT count(nlinea) FROM lineascarro WHERE idCarrito = '$idCarrito'";
+                $consulta = "SELECT max(nlinea) as cantidadLineas FROM lineascarro WHERE idCarrito = '$this->idCarrito'";
                 $result = $link->prepare($consulta);
                 $result->execute();
                 return $result;
+                
             }
             catch(PDOException $e){
                 $error = "Error: " . $e->getMessage();
@@ -43,7 +48,7 @@
         function insertar($link){
             try {
                 $link->beginTransaction();
-                $consulta = "INSERT INTO lineascarro VALUES (:idCarrito,:nlinea,:idProducto;:cantidad)";
+                $consulta = "INSERT INTO lineascarro VALUES (:idCarrito,:nlinea,:idProducto,:cantidad)";
                 $result = $link->prepare($consulta);
 
                 $result->bindParam(":idCarrito",$this->idCarrito);
@@ -68,6 +73,42 @@
                 $consulta = "DELETE FROM lineascarro WHERE idCarrito = :idCarrito AND nlinea = :nlinea";
                 $result = $link->prepare($consulta);
                 $result->bindParam(":idCarrito",$this->idCarrito);
+                $result->bindParam(":nlinea",$this->nlinea);
+                $result->execute();
+                $link->commit();
+            }
+            catch(PDOException $e){
+                $link->rollBack();
+                $error = "Error: " . $e->getMessage();
+                return $error;
+                die();
+            }
+        }
+
+        function eliminarTodas($link){
+            try {
+                $link->beginTransaction();
+                $consulta = "DELETE FROM lineascarro WHERE idCarrito = :idCarrito";
+                $result = $link->prepare($consulta);
+                $result->bindParam(":idCarrito",$this->idCarrito);
+                $result->execute();
+                $link->commit();
+            }
+            catch(PDOException $e){
+                $link->rollBack();
+                $error = "Error: " . $e->getMessage();
+                return $error;
+                die();
+            }
+        }
+
+        function actualizar($link){
+            try {
+                $link->beginTransaction();
+                $consulta = "UPDATE lineascarro SET cantidad = :cantidad WHERE idCarrito = :idCarrito AND nlinea = :nlinea";
+                $result = $link->prepare($consulta);
+                $result->bindParam(":idCarrito",$this->idCarrito);
+                $result->bindParam(":cantidad",$this->cantidad);
                 $result->bindParam(":nlinea",$this->nlinea);
                 $result->execute();
                 $link->commit();
