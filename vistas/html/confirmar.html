@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <title>Cart VM</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <link rel="stylesheet" href="../css/style.css">
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=VT323&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="contenedorLogo">
+          <a href="index.html"><img src="../img/logo.png" alt="logo" id="logo"></a>
+        </div>
+        <nav class="breadcrumb">
+            <a class="breadcrumb-item" href="index.html">Inicio</a>
+            <a class="breadcrumb-item" href="carrito.html">Carrito</a>
+            <span class="breadcrumb-item active" aria-current="page">Confirmar</span>
+        </nav>
+        <header>
+            <nav class="navbar d-flex px-4">
+                <div id="iconos">
+                    <a href="index.html"><img src="../img/inicio.png" alt="inicio"></a>
+                    <a href="login.html"><img src='../img/usuario.png' alt="usuario"></a>
+                    <a href="#"><img src="../img/buscar.png" alt="buscar"></a>
+                    <a href="carrito.html"><img src="../img/carrito.png" alt="carro"></a>
+                </div>
+                <div id="buscar">
+                    <input type="text">
+                    <img src="../img/buscar.png" alt="buscar">
+                </div>
+            </nav>
+            <div id="barraBuscador">
+                <input type="text">
+            </div>
+        </header>
+
+        <main>
+           <div id="contenedorTransferencia">
+                <h1>Confirmar Transferencia</h1>
+                <form id="formTransferencia">
+                    <div id="contenedorTarjeta">
+                        <input type="text" placeholder="Numero de Tarjeta"></input>
+                        <span class="material-symbols-outlined">
+                            credit_card
+                        </span>
+                    </div>
+
+                    <div id="contenedorTitular">
+                        <input type="text" placeholder="Titular de la Tarjeta"></input>
+                        <span class="material-symbols-outlined">
+                            person
+                        </span>
+                    </div>
+
+                    <div id="extraTarjeta">
+                        <div id="contenedorCaducidad">
+                            <input type="text" placeholder="MM/YY"></input>
+                            <span class="material-symbols-outlined">
+                                calendar_today
+                            </span>
+                        </div>
+                        <div id="contenedorCVV">
+                            <input type="text" placeholder="CVV"></input>
+                            <span class="material-symbols-outlined">
+                                pin
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                <a href="#" id="botonConfirmar">Finalizar</a>
+           </div>
+        </main>
+
+        <footer>
+          <div id="ubicacion">
+              <img src='../img/ubicacion.png' alt="U">
+              <a href="#">Valencia, Calle Inventada Nº4</a>
+          </div>
+          <div id="contacto">
+              <a href="#"><img src="../img/gmail.png" alt="Gmail"></a>
+              <a href="#"><img src="../img/x.png" alt="X"></a>
+              <a href="#"><img src="../img/instagram.png" alt="Instagram"></a>
+          </div>
+      </footer>
+        
+
+        <div class="decoracionFondo" id="d1"></div>
+        <div class="decoracionFondo" id="d2"></div>
+        <div class="decoracionFondo" id="d3"></div>
+        <div class="decoracionFondo" id="d4"></div>
+        <div class="decoracionFondo" id="d5"></div>
+        <div class="decoracionFondo" id="d6"></div>
+
+        <div id="iconoResponsive">
+            <img src="../img/logo.png">
+        </div>
+
+        <div id="breadcrumbResponsive">
+            <a href="index.html">Inicio</a>
+            <a href="carrito.html">Carrito</a>
+            <span>Confirmar</span>
+        </div>
+        
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
