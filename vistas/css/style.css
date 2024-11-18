@@ -385,11 +385,13 @@ input{
     border-bottom: none;
 }
 
-#informacionWeb {
+#informacionWeb{
     box-shadow: var(--sombra-interna);
     width: 80%;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     max-height: 40vh;
     border: solid 5px whitesmoke;
     background: var(--fondo-translucido);
@@ -397,7 +399,8 @@ input{
     padding: 5%;
 }
 
-#informacionWeb > p{
+
+#informacionWeb > p, #informacionValidar > p{
     width: 100%;
     color: whitesmoke;
     font-weight: bold;
@@ -406,7 +409,7 @@ input{
 #contenedorLogin {
     padding: 3%;
     width: 40%;
-    height: 65vh;
+    height: 70vh;
     background-color: var(--navfooter-color);
     display: flex;
     flex-direction: column;
@@ -973,11 +976,14 @@ button:is(#aumentar, #disminuir):active {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
 .imagenYNombre > img {
-    width: 80%;
+    width: 100px;
     height: 100px;
+    margin-right: 15px;
+    margin-left: 0;
     border-radius: 15px;
     box-shadow: var(--sombra-interna);
 }
@@ -1024,6 +1030,7 @@ button:is(#aumentar, #disminuir):active {
 
 #zonaPago {
     grid-column: 4 / 6;
+    max-height: 50vh;
     border: solid 5px whitesmoke;
     border-radius: 10px;
     background-color: var(--navfooter-color);
@@ -1070,6 +1077,11 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     font-weight: 500;
 }
 
+#formTransferencia {
+    min-height: 40vh !important;
+    
+}
+
 #botonConfirmar {
     margin: auto;
     background-color: var(--color-primario);
@@ -1083,7 +1095,21 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     text-decoration: none;
 }
 
-#botonConfirmar:hover {
+#botonFinalizar {
+    background-color: var(--color-primario);
+    border-radius: 15px;
+    width: fit-content;
+    align-self: center;
+    padding: 1%;
+    color: whitesmoke;
+    font-size: medium;
+    font-weight: bold;
+    border: solid 5px rgb(98, 255, 140);
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+#botonConfirmar:hover, #botonFinalizar:hover {
     background: var(--color-secundario);
     border-color: rgb(255, 196, 88);
 }
@@ -1259,7 +1285,7 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     }
 
     .imagenYNombre > img {
-        width: 70%;
+        width: 75px;
         height: 75px;
     }
 
@@ -1348,7 +1374,7 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     }
 
     .imagenYNombre > img {
-        width: 50%;
+        width: 50px;
         height: 50px;
     }
 }

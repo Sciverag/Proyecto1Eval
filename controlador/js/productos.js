@@ -76,7 +76,7 @@ function filtrar(){
         if(textoFiltro != "" || textoFiltro == null){
             console.log("texto y tipo")
             for(const tipo of tiposActivados){
-                fetch('http://localhost/Proyecto1Eval/servicios/producto.php?textoFiltro='+textoFiltro+'&tipo='+tipo, {
+                fetch('http://localhost/Proyecto1Eval/api/producto/servicios/producto.php?textoFiltro='+textoFiltro+'&tipo='+tipo, {
                     method: 'GET'
                 })
                 .then(response => response.json())
@@ -85,7 +85,7 @@ function filtrar(){
             }
         }else{
             for(const tipo of tiposActivados){
-                fetch('http://localhost/Proyecto1Eval/servicios/producto.php?tipo='+tipo, {
+                fetch('http://localhost/Proyecto1Eval/api/producto/servicios/producto.php?tipo='+tipo, {
                     method: 'GET'
                 })
                 .then(response => response.json())
@@ -95,14 +95,14 @@ function filtrar(){
         }
     }else{
         if(textoFiltro != "" || textoFiltro == null){
-            fetch('http://localhost/Proyecto1Eval/servicios/producto.php?textoFiltro='+textoFiltro, {
+            fetch('http://localhost/Proyecto1Eval/api/producto/servicios/producto.php?textoFiltro='+textoFiltro, {
                 method: 'GET'
             })
             .then(response => response.json())
             .then(data => colocarProductos(data))
             .catch(error => console.error(error));
         }else{
-            fetch('http://localhost/Proyecto1Eval/servicios/producto.php',{
+            fetch('http://localhost/Proyecto1Eval/api/producto/servicios/producto.php',{
                 method: 'GET'
             })
             .then(response => response.json())
@@ -117,7 +117,7 @@ function filtrar(){
 function productosInicial(){
     listaProductos.innerHTML = "";
     if(textoFiltroInicial == null){
-        fetch('http://localhost/Proyecto1Eval/servicios/producto.php',{
+        fetch('http://localhost/Proyecto1Eval/api/producto/servicios/producto.php',{
             method: 'GET'
         })
         .then(response => response.json())
@@ -157,6 +157,101 @@ function colocarProductos(productos){
         iconoCarro.setAttribute("class","material-symbols-outlined");
         iconoCarro.innerText = "shopping_cart";
         botonCarro.appendChild(iconoCarro);
+        botonCarro.addEventListener("click", () => {
+            comprar(producto.idProducto);
+        })
         cartaProducto.appendChild(botonCarro);
     }
+}
+
+function comprar(idProducto){
+    if(!sessionStorage.getItem("idUnica")){
+        crearCarrito(idProducto);
+    }else{
+        yaEnCarro(idProducto);
+    }
+}
+
+function crearCarrito(idProducto){
+    sessionStorage.setItem("idUnica",Date.now());
+    
+    fetch("http://localhost/Proyecto1Eval/api/carrito/servicios/carrito.php", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            'dniCliente': sessionStorage.getItem("dniCliente"),
+            'idCarro': sessionStorage.getItem("idUnica")
+        })
+    })
+    .then(response => response.json())
+    .then(data => yaEnCarro(idProducto))
+    .catch(error => console.log(error));
+    
+}
+
+function meterEnCarro(idProducto){
+    fetch("http://localhost/Proyecto1Eval/api/carrito/servicios/lineascarrito.php", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            'idCarro': sessionStorage.getItem("idUnica"),
+            'idProducto': idProducto,
+            'cantidad': 1
+        })
+    })
+    .then(response => response.json())
+    .then(data => () => {
+        window.location.href = "carrito.html";
+    })
+    .catch(error => console.log(error));
+}
+
+function yaEnCarro(idProducto){
+    fetch("http://localhost/Proyecto1Eval/api/carrito/servicios/lineascarrito.php?idCarro="+sessionStorage.getItem("idUnica"), {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => comprobarEnCarro(data, idProducto))
+    .catch(error => console.log(error));
+}
+
+function comprobarEnCarro(lineas, idProducto){
+    let existe = false;
+    let nLinea = null;
+    let cantidadEnCaro = 0;
+    for(const linea of lineas){
+        if(linea.idProducto == idProducto){
+            existe = true;
+            nLinea = linea.nlinea;
+            cantidadEnCaro = linea.cantidad;
+        }
+    }
+
+    if(existe){
+        let cantidadTotal = 1 + parseInt(cantidadEnCaro);
+        fetch("http://localhost/Proyecto1Eval/api/carrito/servicios/lineascarrito.php", {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                'idCarro': sessionStorage.getItem("idUnica"),
+                'nlinea': nLinea,
+                'cantidad': cantidadTotal
+            })
+        })
+        .then(response => response.json())
+        .then(data => () => {
+            window.location.href = "carrito.html";
+        })
+        .catch(error => console.log(error));
+    }else{
+        meterEnCarro(idProducto);
+    }
+
+    window.location.href = "carrito.html";
 }

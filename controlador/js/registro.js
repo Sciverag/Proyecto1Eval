@@ -20,7 +20,7 @@ function registrar(){
     if(dni == "" || pwd == "" || nombre == "" || direccion == "" || email == ""){
         alert("Por favor, complete todos los campos");
     }else{
-        fetch('http://localhost/Proyecto1Eval/servicios/cliente.php', {
+        fetch('http://localhost/Proyecto1Eval/api/cliente/servicios/cliente.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,6 +36,19 @@ function registrar(){
         .then(response => response.json())
         .then(() => {
             sessionStorage.setItem("dniCliente",dni);
+            if(sessionStorage.getItem("idUnica")){
+                fetch('http://localhost/Proyecto1Eval/api/carrito/servicios/carrito.php', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        'dniCliente': sessionStorage.getItem("dniCliente"),
+                        'idCarro': sessionStorage.getItem("idUnica")
+                    })
+                })
+            }
+
             window.location.href = "index.html";
         })
         .catch(error => console.error(error));

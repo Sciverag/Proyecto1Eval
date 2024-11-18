@@ -18,7 +18,7 @@
 
         function getAllByIdCarro($link){
             try {
-                $consulta = "SELECT *, count(*) cantidadLineas FROM lineascarro WHERE idCarrito = '$this->idCarrito'";
+                $consulta = "SELECT * FROM lineascarro WHERE idCarrito = '$this->idCarrito'";
                 $result = $link->prepare($consulta);
                 $result->execute();
                 return $result;

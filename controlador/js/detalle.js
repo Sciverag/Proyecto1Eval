@@ -9,6 +9,7 @@ const contenedorEtiquetas = document.getElementById("etiquetasProducto");
 const botonAumentar = document.getElementById("aumentar");
 const botonDisminuir = document.getElementById("disminuir");
 const cantidad = document.getElementById("cantidad");
+const botonComprar = document.getElementById("botonComprar");
 
 function sacarParametrosUrl(dato){
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -37,6 +38,10 @@ cantidad.addEventListener("change",() => {
     ajustarPrecio();
 })
 
+botonComprar.addEventListener("click",() => {
+    comprar();
+})
+
 obtenerInformacion();
 
 function ajustarPrecio(){
@@ -45,7 +50,7 @@ function ajustarPrecio(){
 }
 
 function obtenerInformacion(){
-    fetch('http://localhost/Proyecto1Eval/servicios/producto.php?idProducto='+idProducto, {
+    fetch('http://localhost/Proyecto1Eval/api/producto/servicios/producto.php?idProducto='+idProducto, {
         method: 'GET'
     })
     .then(response => response.json())
@@ -75,4 +80,96 @@ function crearEtiqueta(etiqueta){
     const cajaEtiqueta = document.createElement("P");
     cajaEtiqueta.innerText = etiqueta;
     contenedorEtiquetas.appendChild(cajaEtiqueta);
+}
+
+function comprar(){
+    if(!sessionStorage.getItem("idUnica")){
+        crearCarrito();
+    }else{
+        yaEnCarro();
+    }
+}
+
+function crearCarrito(){
+    sessionStorage.setItem("idUnica",Date.now());
+    
+    fetch("http://localhost/Proyecto1Eval/api/carrito/servicios/carrito.php", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            'dniCliente': sessionStorage.getItem("dniCliente"),
+            'idCarro': sessionStorage.getItem("idUnica")
+        })
+    })
+    .then(response => response.json())
+    .then(data => yaEnCarro())
+    .catch(error => console.log(error));
+    
+}
+
+function meterEnCarro(){
+    fetch("http://localhost/Proyecto1Eval/api/carrito/servicios/lineascarrito.php", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            'idCarro': sessionStorage.getItem("idUnica"),
+            'idProducto': idProducto,
+            'cantidad': cantidad.value
+        })
+    })
+    .then(response => response.json())
+    .then(data => () => {
+        window.location.href = "carrito.html";
+    })
+    .catch(error => console.log(error));
+}
+
+function yaEnCarro(){
+    fetch("http://localhost/Proyecto1Eval/api/carrito/servicios/lineascarrito.php?idCarro="+sessionStorage.getItem("idUnica"), {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => comprobarEnCarro(data))
+    .catch(error => console.log(error));
+}
+
+function comprobarEnCarro(lineas){
+    let existe = false;
+    let nLinea = null;
+    let cantidadEnCaro = 0;
+    for(const linea of lineas){
+        if(linea.idProducto == idProducto){
+            existe = true;
+            nLinea = linea.nlinea;
+            cantidadEnCaro = linea.cantidad;
+        }
+    }
+
+    if(existe){
+        let cantidadTotal = parseInt(cantidad.value) + parseInt(cantidadEnCaro);
+        fetch("http://localhost/Proyecto1Eval/api/carrito/servicios/lineascarrito.php", {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                'idCarro': sessionStorage.getItem("idUnica"),
+                'nlinea': nLinea,
+                'cantidad': cantidadTotal
+            })
+        })
+        .then(response => response.json())
+        .then(data => () => {
+            window.location.href = "carrito.html";
+        })
+        .catch(error => console.log(error));
+    }else{
+        meterEnCarro();
+    }
+
+    window.location.href = "carrito.html";
 }
