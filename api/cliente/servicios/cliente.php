@@ -15,6 +15,14 @@
             header("HTTP/1.1 200 OK");
             echo json_encode($dato);
             exit();
+        }else if(isset($_GET['dniCliente'])){
+            $dniCliente = $_GET['dniCliente'];
+            $pwd = $_GET['pwd'];
+            $cli = new Cliente($dniCliente,'','','',$pwd,false);
+            $dato=$cli->get($base->link);
+            header("HTTP/1.1 200 OK");
+            echo json_encode($dato->fetch(PDO::FETCH_ASSOC));
+            exit();
         }
     }
 

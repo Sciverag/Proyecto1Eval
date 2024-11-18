@@ -41,6 +41,21 @@
             }
         }
 
+        function get($link){
+            try{
+                $consulta="SELECT * FROM clientes WHERE dniCliente = '$this->dni'";
+                $result=$link->prepare($consulta);
+                $result->execute();
+
+                return $result;
+            }
+            catch(PDOException $e){
+                $error = "Error: " . $e->getMessage();
+                return $error;
+                die();
+            }
+        }
+
         function registrar ($link){
             try{
                 $link->beginTransaction();
