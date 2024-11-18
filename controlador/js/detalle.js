@@ -45,7 +45,7 @@ function ajustarPrecio(){
 }
 
 function obtenerInformacion(){
-    fetch('http://localhost/Proyecto1Eval/controlador/producto.php?idProducto='+idProducto, {
+    fetch('http://localhost/Proyecto1Eval/servicios/producto.php?idProducto='+idProducto, {
         method: 'GET'
     })
     .then(response => response.json())

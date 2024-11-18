@@ -76,7 +76,7 @@ function filtrar(){
         if(textoFiltro != "" || textoFiltro == null){
             console.log("texto y tipo")
             for(const tipo of tiposActivados){
-                fetch('http://localhost/Proyecto1Eval/controlador/producto.php?textoFiltro='+textoFiltro+'&tipo='+tipo, {
+                fetch('http://localhost/Proyecto1Eval/servicios/producto.php?textoFiltro='+textoFiltro+'&tipo='+tipo, {
                     method: 'GET'
                 })
                 .then(response => response.json())
@@ -85,7 +85,7 @@ function filtrar(){
             }
         }else{
             for(const tipo of tiposActivados){
-                fetch('http://localhost/Proyecto1Eval/controlador/producto.php?tipo='+tipo, {
+                fetch('http://localhost/Proyecto1Eval/servicios/producto.php?tipo='+tipo, {
                     method: 'GET'
                 })
                 .then(response => response.json())
@@ -95,14 +95,14 @@ function filtrar(){
         }
     }else{
         if(textoFiltro != "" || textoFiltro == null){
-            fetch('http://localhost/Proyecto1Eval/controlador/producto.php?textoFiltro='+textoFiltro, {
+            fetch('http://localhost/Proyecto1Eval/servicios/producto.php?textoFiltro='+textoFiltro, {
                 method: 'GET'
             })
             .then(response => response.json())
             .then(data => colocarProductos(data))
             .catch(error => console.error(error));
         }else{
-            fetch('http://localhost/Proyecto1Eval/controlador/producto.php',{
+            fetch('http://localhost/Proyecto1Eval/servicios/producto.php',{
                 method: 'GET'
             })
             .then(response => response.json())
@@ -117,7 +117,7 @@ function filtrar(){
 function productosInicial(){
     listaProductos.innerHTML = "";
     if(textoFiltroInicial == null){
-        fetch('http://localhost/Proyecto1Eval/controlador/producto.php',{
+        fetch('http://localhost/Proyecto1Eval/servicios/producto.php',{
             method: 'GET'
         })
         .then(response => response.json())

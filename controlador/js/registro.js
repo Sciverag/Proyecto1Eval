@@ -20,7 +20,7 @@ function registrar(){
     if(dni == "" || pwd == "" || nombre == "" || direccion == "" || email == ""){
         alert("Por favor, complete todos los campos");
     }else{
-        fetch('http://localhost/Proyecto1Eval/controlador/cliente.php', {
+        fetch('http://localhost/Proyecto1Eval/servicios/cliente.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

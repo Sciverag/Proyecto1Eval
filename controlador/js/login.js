@@ -18,7 +18,7 @@ function verificar(){
     if(dni == "" || pwd == ""){
         alert("Debes rellenar todos los campos");
     }else{
-        fetch('http://localhost/Proyecto1Eval/controlador/cliente.php?dniCliente='+dni+'&pwd='+pwd, {
+        fetch('http://localhost/Proyecto1Eval/servicios/cliente.php?dniCliente='+dni+'&pwd='+pwd, {
             method: 'GET'
         })
         .then(response => response.json())
