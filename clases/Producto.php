@@ -47,5 +47,37 @@
                 die();
             }
         }
+
+        function filtrar($link){
+            if($this->tipo != ''){
+                try{
+                    if($this->nombre != ''){
+                        $consulta="SELECT * FROM productos WHERE tipo = '$this->tipo' AND (nombre LIKE '%$this->nombre%' OR etiquetas LIKE '%$this->etiquetas%')";
+                    }else{
+                        $consulta="SELECT * FROM productos WHERE tipo = '$this->tipo'";
+                    }
+                    $result=$link->prepare($consulta);
+                    $result->execute();
+                    return $result;
+                }
+                catch(PDOException $e){
+                    $error = "Error: ".$e->getMessage();
+                    return $error;
+                    die();
+                }
+            }else{
+                try{
+                    $consulta="SELECT * FROM productos WHERE nombre LIKE '%$this->nombre%' OR etiquetas LIKE '%$this->etiquetas%'";
+                    $result=$link->prepare($consulta);
+                    $result->execute();
+                    return $result;
+                }
+                catch(PDOException $e){
+                    $error = "Error: ".$e->getMessage();
+                    return $error;
+                    die();
+                }
+            }
+        }
     }
 ?>

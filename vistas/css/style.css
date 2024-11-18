@@ -575,6 +575,11 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     display: flex;
 }
 
+#filtros > button[activado] {
+    background-color: var(--color-primario) !important;
+    scale: 105%;
+}
+
 #filtros > button {
     background-color: var(--color-secundario);
     border: solid 3px whitesmoke;
@@ -585,7 +590,7 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     transition: all 0.25s;
 }
 
-#filtros > button:hover, button[activado] {
+#filtros > button:hover{
     background-color: var(--color-primario);
     scale: 105%;
     transition: all 0.25s;
@@ -597,9 +602,12 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     margin-top: 3%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
-    grid-gap: 1%;
+    grid-gap: 2%;
+    max-height: 60vh;
     border: solid 5px whitesmoke;
     border-radius: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
     padding: 1%;
 }
 
@@ -660,7 +668,7 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
 #contenedorDetalle {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 1fr;
     grid-gap: 1%;
     width: 100%;
     height: 100%;
@@ -683,7 +691,8 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
 
 #contenedorInfoProducto{
     grid-column: 4 / span 2;
-    grid-row: 1 / 5;
+    grid-row: 1;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -772,7 +781,7 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     color: rgb(69, 153, 255);
     font-weight: bold;
     border-radius: 10px;
-    font-size: small;
+    font-size: medium;
     padding: 1% 2%;
     margin: auto;
 }
@@ -784,7 +793,11 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
 
 #marcaProducto {
     color: var(--color-secundario);
-    font-size: large;
+    font-size: larger;
+}
+
+#marcaProducto::first-letter, #etiquetasProducto > p::first-letter {
+    text-transform: uppercase;
 }
 
 #precioProducto {
@@ -827,7 +840,7 @@ input[type=number] {
 }
 
 #descripcionProducto {
-    font-size: smaller;
+    font-size: medium;
     font-weight: 500;
     color: rgb(10, 10, 10);
 }

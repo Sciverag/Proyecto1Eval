@@ -22,6 +22,20 @@
             }
         }
 
+        function obtenerCarroCliente($link){
+            try{
+                $consulta = "SELECT * FROM carrito WHERE dniCliente = '$this->dniCliente'";
+                $result = $link->prepare($consulta);
+                $result->execute();
+                return $result;
+            }
+            catch(PDOException $e){
+                $error = "Error: " . $e->getMessage();
+                return $error;
+                die();
+            }
+        }
+
         function insertar($link){
             try{
                 $link->beginTransaction();

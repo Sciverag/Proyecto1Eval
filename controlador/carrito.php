@@ -16,6 +16,15 @@
             header("HTTP/1.1 200 OK");
             echo json_encode($dato->fetch());
             exit();
+        }else if(isset($_GET['dniCliente'])){
+            $dniCliente = $_GET['dniCliente'];
+            $carro = new Carrito('',$dniCliente);
+
+            $dato = $carro->obtenerCarroCliente($base->link);
+            $dato->setFetchMode(PDO::FETCH_ASSOC);
+            header("HTTP/1.1 200 OK");
+            echo json_encode($dato->fetch());
+            exit();
         }
     }
 
