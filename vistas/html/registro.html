@@ -41,23 +41,23 @@
                 </div>
                 <form id="formLogin">
                     <div>
-                        <input type="text" placeholder="DNI"></input>
+                        <input id="DNI" type="text" required placeholder="DNI"></input>
                         <span class="material-symbols-outlined">id_card</span>
                     </div>
                     <div>
-                        <input type="text" placeholder="Nombre"></input>
+                        <input id="nombre" type="text" required placeholder="Nombre"></input>
                         <span class="material-symbols-outlined">person</span>
                     </div>
                     <div>
-                        <input type="text" placeholder="Dirección"></input>
+                        <input id="direccion" type="text" required placeholder="Dirección"></input>
                         <span class="material-symbols-outlined">home_pin</span>
                     </div>
                     <div>
-                        <input type="email" placeholder="Email"></input>
+                        <input id="email" type="email" required placeholder="Email"></input>
                         <span class="material-symbols-outlined">mail</span>
                     </div>
                     <div>
-                        <input type="password" placeholder="Contraseña"></input>
+                        <input id="pwd" type="password" required placeholder="Contraseña"></input>
                         <span class="material-symbols-outlined">password</span>
                     </div>
                     <input class="botonLogin" type="submit" value="Crear Cuenta"></input>
@@ -95,5 +95,6 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        <script src="../../controlador/js/registro.js"></script>
     </body>
 </html>

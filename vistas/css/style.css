@@ -385,11 +385,13 @@ input{
     border-bottom: none;
 }
 
-#informacionWeb {
+#informacionWeb{
     box-shadow: var(--sombra-interna);
     width: 80%;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     max-height: 40vh;
     border: solid 5px whitesmoke;
     background: var(--fondo-translucido);
@@ -397,7 +399,49 @@ input{
     padding: 5%;
 }
 
-#informacionWeb > p{
+#informacionPedido {
+    box-shadow: var(--sombra-interna);
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid 5px whitesmoke;
+    border-radius: 10px;
+    background: var(--fondo-translucido);
+    text-align: center;
+}
+
+#informacionPedido > h4 {
+    width: 100%;
+    text-align: center;
+    color: var(--color-primario);
+    background-color: var(--navfooter-color);
+    border-bottom: 5px solid whitesmoke;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 1%;
+}
+
+#contenidoPedido {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--navfooter-color);
+    border-top: 5px solid whitesmoke;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    color: var(--color-secundario);
+    padding: 1%;
+}
+
+#informacionWeb > p, #informacionPedido > p{
     width: 100%;
     color: whitesmoke;
     font-weight: bold;
@@ -406,7 +450,7 @@ input{
 #contenedorLogin {
     padding: 3%;
     width: 40%;
-    height: 65vh;
+    height: 70vh;
     background-color: var(--navfooter-color);
     display: flex;
     flex-direction: column;
@@ -575,6 +619,11 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     display: flex;
 }
 
+#filtros > button[activado] {
+    background-color: var(--color-primario) !important;
+    scale: 105%;
+}
+
 #filtros > button {
     background-color: var(--color-secundario);
     border: solid 3px whitesmoke;
@@ -585,7 +634,7 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     transition: all 0.25s;
 }
 
-#filtros > button:hover, button[activado] {
+#filtros > button:hover{
     background-color: var(--color-primario);
     scale: 105%;
     transition: all 0.25s;
@@ -597,9 +646,12 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     margin-top: 3%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
-    grid-gap: 1%;
+    grid-gap: 2%;
+    max-height: 60vh;
     border: solid 5px whitesmoke;
     border-radius: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
     padding: 1%;
 }
 
@@ -660,7 +712,7 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
 #contenedorDetalle {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 1fr;
     grid-gap: 1%;
     width: 100%;
     height: 100%;
@@ -683,7 +735,8 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
 
 #contenedorInfoProducto{
     grid-column: 4 / span 2;
-    grid-row: 1 / 5;
+    grid-row: 1;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -772,7 +825,7 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
     color: rgb(69, 153, 255);
     font-weight: bold;
     border-radius: 10px;
-    font-size: small;
+    font-size: medium;
     padding: 1% 2%;
     margin: auto;
 }
@@ -784,7 +837,11 @@ form:is(#formLogin, #formTransferencia) div:not(#extraTarjeta) {
 
 #marcaProducto {
     color: var(--color-secundario);
-    font-size: large;
+    font-size: larger;
+}
+
+#marcaProducto::first-letter, #etiquetasProducto > p::first-letter {
+    text-transform: uppercase;
 }
 
 #precioProducto {
@@ -827,7 +884,7 @@ input[type=number] {
 }
 
 #descripcionProducto {
-    font-size: smaller;
+    font-size: medium;
     font-weight: 500;
     color: rgb(10, 10, 10);
 }
@@ -960,11 +1017,14 @@ button:is(#aumentar, #disminuir):active {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
 .imagenYNombre > img {
-    width: 80%;
+    width: 100px;
     height: 100px;
+    margin-right: 15px;
+    margin-left: 0;
     border-radius: 15px;
     box-shadow: var(--sombra-interna);
 }
@@ -1011,6 +1071,7 @@ button:is(#aumentar, #disminuir):active {
 
 #zonaPago {
     grid-column: 4 / 6;
+    max-height: 50vh;
     border: solid 5px whitesmoke;
     border-radius: 10px;
     background-color: var(--navfooter-color);
@@ -1057,6 +1118,11 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     font-weight: 500;
 }
 
+#formTransferencia {
+    min-height: 40vh !important;
+    
+}
+
 #botonConfirmar {
     margin: auto;
     background-color: var(--color-primario);
@@ -1070,7 +1136,21 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     text-decoration: none;
 }
 
-#botonConfirmar:hover {
+#botonFinalizar {
+    background-color: var(--color-primario);
+    border-radius: 15px;
+    width: fit-content;
+    align-self: center;
+    padding: 1%;
+    color: whitesmoke;
+    font-size: medium;
+    font-weight: bold;
+    border: solid 5px rgb(98, 255, 140);
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+#botonConfirmar:hover, #botonFinalizar:hover {
     background: var(--color-secundario);
     border-color: rgb(255, 196, 88);
 }
@@ -1246,7 +1326,7 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     }
 
     .imagenYNombre > img {
-        width: 70%;
+        width: 75px;
         height: 75px;
     }
 
@@ -1335,7 +1415,7 @@ div:is(#total, #envio ,#totalIVA) > p:nth-child(1) {
     }
 
     .imagenYNombre > img {
-        width: 50%;
+        width: 50px;
         height: 50px;
     }
 }
