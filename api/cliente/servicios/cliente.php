@@ -7,22 +7,22 @@
     $data = json_decode($body, true);
 
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
-        if(isset($_GET['dniCliente']) && isset($_GET['pwd'])){
+        if(isset($_GET['dniCliente'])){
             $dniCliente = $_GET['dniCliente'];
-            $pwd = $_GET['pwd'];
-            $cli = new Cliente($dniCliente,'','','',$pwd,false);
-            $dato=$cli->validar($base->link);
-            header("HTTP/1.1 200 OK");
-            echo json_encode($dato);
-            exit();
-        }else if(isset($_GET['dniCliente'])){
-            $dniCliente = $_GET['dniCliente'];
-            $pwd = $_GET['pwd'];
-            $cli = new Cliente($dniCliente,'','','',$pwd,false);
-            $dato=$cli->get($base->link);
-            header("HTTP/1.1 200 OK");
-            echo json_encode($dato->fetch(PDO::FETCH_ASSOC));
-            exit();
+            if(isset($_GET['pwd'])){
+                $pwd = $_GET['pwd'];
+                $cli = new Cliente($dniCliente,'','','',$pwd,false);
+                $dato=$cli->validar($base->link);
+                header("HTTP/1.1 200 OK");
+                echo json_encode($dato);
+                exit();
+            }else{
+                $cli = new Cliente($dniCliente,'','','','',false);
+                $dato=$cli->get($base->link);
+                header("HTTP/1.1 200 OK");
+                echo json_encode($dato->fetch(PDO::FETCH_ASSOC));
+                exit();
+            }
         }
     }
 

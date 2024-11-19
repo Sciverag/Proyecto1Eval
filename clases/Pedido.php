@@ -12,13 +12,16 @@
             $this->dirEntrega = $dirEntrega;
         }
 
+        function __get($name){
+            return $this->$name;
+        }
+
         static function maxIdPedido($link){
             try {
                 $consulta = "SELECT max(idPedido) as maxIdPedido FROM pedidos";
                 $result = $link->prepare($consulta);
                 $result->execute();
-                return $result;
-                
+                return $result->fetch(PDO::FETCH_ASSOC);
             }
             catch(PDOException $e){
                 $error = "Error: " . $e->getMessage();

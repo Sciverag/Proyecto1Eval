@@ -21,6 +21,9 @@ SET time_zone = "+00:00";
 -- Base de datos: `cartvm`
 --
 
+CREATE DATABASE IF NOT EXISTS `cartvm` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `cartvm`;
+
 -- --------------------------------------------------------
 
 --

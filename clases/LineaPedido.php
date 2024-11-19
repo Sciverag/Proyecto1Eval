@@ -12,6 +12,10 @@
             $this->cantidad = $cantidad;
         }
 
+        function __get($name){
+            return $this->$name;
+        }
+
         function insertar($link){
             try{
                 $consulta = "INSERT INTO lineaspedidos VALUES (:idPedido,:nlinea,:idProducto,:cantidad)";
